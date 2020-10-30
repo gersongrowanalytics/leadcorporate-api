@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\paupasosusuarios;
 use App\dsudatossubpasos;
+use App\resregistrossucursales;
 
 class EditarSalidaTiendaController extends Controller
 {
@@ -19,7 +20,11 @@ class EditarSalidaTiendaController extends Controller
 
         if($pau){
             $pau->pauestado = true;
-            $pau->update();
+            if($pau->update()){
+                $res = resregistrossucursales::find($pau->resid);
+                $res->resestado = true;
+                $res->update();
+            }
         }
 
         $dsue = dsudatossubpasos::find($dsu['dsuid']);
