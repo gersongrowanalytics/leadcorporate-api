@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\paupasosusuarios;
 use App\dsudatossubpasos;
 use App\resregistrossucursales;
+use App\sucsucursales;
 
 class EditarSalidaTiendaController extends Controller
 {
@@ -23,7 +24,12 @@ class EditarSalidaTiendaController extends Controller
             if($pau->update()){
                 $res = resregistrossucursales::find($pau->resid);
                 $res->resestado = true;
-                $res->update();
+                if($res->update()){
+                    $suc = sucsucursales::find($res->sucid);
+                    $suc->sucestado = true;
+                    $suc->update();
+
+                }
             }
         }
 

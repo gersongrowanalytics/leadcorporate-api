@@ -53,52 +53,50 @@ class EditarEntregaMercaderiaController extends Controller
                     }
                 }
 
+                if($dsue->desupedidocompleto != 1){
+                    $tpcsOtros = $dsu['tpcsOtros'];
+                    $copsOtros = $tpcsOtros['cops'];
 
-                $tpcsOtros = $dsu['tpcsOtros'];
-                $copsOtros = $tpcsOtros['cops'];
-
-                foreach($copsOtros as $copOtros){
-                    if($copOtros['copid'] == 0){
-                        $copn = new copcomprobantespasos;
-                        $copn->tpcid     = $tpcsOtros['tpcid'];
-                        $copn->dsuid     = $dsue['dsuid'];
-                        $copn->pasid     = $dsue['pasid'];
-                        $copn->copnumero = $copOtros['copnumero'];
-                        if($copn->save()){
-                            $cacs = $copOtros['cacs'];
-                            foreach($cacs as $cac){
-                                $cacn = new caccantidadescomprobantes;
-                                $cacn->copid        = $copn->copid;
-                                $cacn->caccodigoean = $cac['caccodigoean'];
-                                $cacn->caccantidad  = $cac['caccantidad'];
-                                $cacn->save();
-                            }
-                        }
-                    }else{
-                        $cope = copcomprobantespasos::find($copOtros['copid']);
-                        $cope->copnumero = $copOtros['copnumero'];
-                        if($cope->update()){
-                            $cacs = $copOtros['cacs'];
-                            foreach($cacs as $cac){
-                                if($cac['cacid'] == 0){
+                    foreach($copsOtros as $copOtros){
+                        if($copOtros['copid'] == 0){
+                            $copn = new copcomprobantespasos;
+                            $copn->tpcid     = $tpcsOtros['tpcid'];
+                            $copn->dsuid     = $dsue['dsuid'];
+                            $copn->pasid     = $dsue['pasid'];
+                            $copn->copnumero = $copOtros['copnumero'];
+                            if($copn->save()){
+                                $cacs = $copOtros['cacs'];
+                                foreach($cacs as $cac){
                                     $cacn = new caccantidadescomprobantes;
-                                    $cacn->copid        = $cope->copid;
+                                    $cacn->copid        = $copn->copid;
                                     $cacn->caccodigoean = $cac['caccodigoean'];
                                     $cacn->caccantidad  = $cac['caccantidad'];
                                     $cacn->save();
-                                }else{
-                                    $cace = caccantidadescomprobantes::find($cac['cacid']);
-                                    $cace->caccodigoean = $cac['caccodigoean'];
-                                    $cace->caccantidad  = $cac['caccantidad'];
-                                    $cace->update();
+                                }
+                            }
+                        }else{
+                            $cope = copcomprobantespasos::find($copOtros['copid']);
+                            $cope->copnumero = $copOtros['copnumero'];
+                            if($cope->update()){
+                                $cacs = $copOtros['cacs'];
+                                foreach($cacs as $cac){
+                                    if($cac['cacid'] == 0){
+                                        $cacn = new caccantidadescomprobantes;
+                                        $cacn->copid        = $cope->copid;
+                                        $cacn->caccodigoean = $cac['caccodigoean'];
+                                        $cacn->caccantidad  = $cac['caccantidad'];
+                                        $cacn->save();
+                                    }else{
+                                        $cace = caccantidadescomprobantes::find($cac['cacid']);
+                                        $cace->caccodigoean = $cac['caccodigoean'];
+                                        $cace->caccantidad  = $cac['caccantidad'];
+                                        $cace->update();
+                                    }
                                 }
                             }
                         }
                     }
                 }
-
-
-
 
             }
         }
