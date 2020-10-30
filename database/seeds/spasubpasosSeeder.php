@@ -27,7 +27,7 @@ class spasubpasosSeeder extends Seeder
         spasubpasos::create([
             // "spaid"     = 3,
             "pasid"     => 2,
-            "spanombre" => "2.1 Estado Inicial",
+            "spanombre" => "2.2 Estado Final",
         ]);
 
         spasubpasos::create([

@@ -145,6 +145,7 @@ class CpaCategoriasPasosController extends Controller
                                         ->get([
                                             'mpamarcaspasos.mpaid',
                                             'mpamarcaspasos.mapid',
+                                            'mpamarcaspasos.capid',
                                             'mar.marid',
                                             'mar.marnombre',
                                             'mpamarcaspasos.mpaestado'

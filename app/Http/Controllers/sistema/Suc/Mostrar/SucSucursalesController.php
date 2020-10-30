@@ -150,6 +150,7 @@ class SucSucursalesController extends Controller
                                     foreach($cpas as $posicionCpas => $cpa){
 
                                         $mpas = mpamarcaspasos::join('marmarcas as mar', 'mar.marid', 'mpamarcaspasos.marid')
+                                                                ->where('mpamarcaspasos.prvid', $prvsprincipal->prvid)
                                                                 ->where('mpamarcaspasos.dsuid', $dsu->dsuid)
                                                                 ->where('mpamarcaspasos.catid', $cpa->catid)
                                                                 ->get([
@@ -203,6 +204,7 @@ class SucSucursalesController extends Controller
                                     foreach($cpas as $posicionCpas => $cpa){
 
                                         $mpas = mpamarcaspasos::join('marmarcas as mar', 'mar.marid', 'mpamarcaspasos.marid')
+                                                                ->where('mpamarcaspasos.prvid', $prvscompetencia->prvid)
                                                                 ->where('mpamarcaspasos.dsuid', $dsu->dsuid)
                                                                 ->where('mpamarcaspasos.catid', $cpa->catid)
                                                                 ->get([
