@@ -398,7 +398,7 @@ class SucSucursalesController extends Controller
                                                                                 ->where('mcpmarcascategoriasproveedores.catid', $cpa->catid)
                                                                                 ->get([
                                                                                     'mcpid',
-                                                                                    'marid',
+                                                                                    'mar.marid',
                                                                                     'marnombre'
                                                                                 ]);
 

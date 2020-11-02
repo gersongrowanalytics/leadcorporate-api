@@ -32,7 +32,7 @@ class UsuariosController extends Controller
             if(!$usu){
                 $usun = new usuusuarios;
                 $usun->usuid          = $id;
-                $usun->tpuid          = 2;
+                $usun->tpuid          = 3;
                 $usun->usuusuario     = $name;
                 $usun->usucontrasenia = $pass;
                 $usun->usutoken       = Str::random(60);
