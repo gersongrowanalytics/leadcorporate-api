@@ -18,6 +18,10 @@ class Resregistrossucursales extends Migration
             $table->unsignedInteger('usuid');
             $table->unsignedInteger('sucid');
             $table->string('resestado');
+            $table->string('resfechaingresotienda')->nullable();
+            $table->string('reshoraingresotienda')->nullable();
+            $table->string('resfechasalidatienda')->nullable();
+            $table->string('reshorasalidatienda')->nullable();
             $table->timestamps();
 
             $table->foreign('usuid')->references('usuid')->on('usuusuarios');

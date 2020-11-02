@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 use App\dsudatossubpasos;
 use App\paupasosusuarios;
 use App\fopfotospasos;
+use App\resregistrossucursales;
 use Illuminate\Support\Str;
 
 class DsuDatosSubPasosController extends Controller
 {
     public function EditarDsu(Request $request)
     {
+        date_default_timezone_set("America/Lima");
+        $fechaActual = date('Y-m-d');
+        $horaActual  = date('H:i:s');
+
         $respuesta      = true;
         $mensaje        = '';
         $datos          = [];
@@ -28,7 +33,12 @@ class DsuDatosSubPasosController extends Controller
 
             if($pau){
                 $pau->pauestado = true;
-                $pau->update();
+                if($pau->update()){
+                    $res = resregistrossucursales::find($dsu->resid);
+                    $res->resfechaingresotienda = $fechaActual;
+                    $res->reshoraingresotienda  = $horaActual;
+                    $res->update();
+                }
             }
 
             $dsu = dsudatossubpasos::find($dsuid);

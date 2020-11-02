@@ -13,6 +13,9 @@ class EditarSalidaTiendaController extends Controller
 {
     public function EditarSalidaTienda(Request $request)
     {
+        date_default_timezone_set("America/Lima");
+        $fechaActual = date('Y-m-d');
+        $horaActual  = date('H:i:s');
 
         $dsu = $request['dsu'];
         $pauid = $request['pauid'];
@@ -23,6 +26,8 @@ class EditarSalidaTiendaController extends Controller
             $pau->pauestado = true;
             if($pau->update()){
                 $res = resregistrossucursales::find($pau->resid);
+                $res->resfechasalidatienda = $fechaActual;
+                $res->reshorasalidatienda  = $horaActual;
                 $res->resestado = true;
                 if($res->update()){
                     $suc = sucsucursales::find($res->sucid);
