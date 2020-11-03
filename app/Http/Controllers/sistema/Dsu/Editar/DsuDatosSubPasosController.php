@@ -34,7 +34,7 @@ class DsuDatosSubPasosController extends Controller
             if($pau){
                 $pau->pauestado = true;
                 if($pau->update()){
-                    $res = resregistrossucursales::find($dsu->resid);
+                    $res = resregistrossucursales::find($pau->resid);
                     $res->resfechaingresotienda = $fechaActual;
                     $res->reshoraingresotienda  = $horaActual;
                     $res->update();
