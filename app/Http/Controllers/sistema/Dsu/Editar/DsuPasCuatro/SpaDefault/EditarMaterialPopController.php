@@ -26,6 +26,7 @@ class EditarMaterialPopController extends Controller
         $prvid = $request['prvid'];
 
         $mppe = mppmaterialespopspasos::find($mpp['mppid']);
+        $mppe->marid          = $mpp['marid'];
         $mppe->mppmarca       = $mpp['mppmarca'];
         $mppe->mppproducto    = $mpp['mppproducto'];
         $mppe->mppdescripcion = $mpp['mppdescripcion'];

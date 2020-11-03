@@ -58,6 +58,7 @@ class SpaLdpController extends Controller
         $pape->pappreciopromocion  = $pap['pappreciopromocion'];
         $pape->papfechainicio      = $pap['papfechainicio'];
         $pape->papfechafin         = $pap['papfechafin'];
+        $pape->mecid               = $pap['mecid'];
         $pape->papestatus          = true;
         if($pape->update()){
             $respuesta = true;
