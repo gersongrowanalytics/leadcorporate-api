@@ -56,6 +56,7 @@ class SpaValidarStockController extends Controller
                     }else{
                         $pap->papquiebre = $productos[$cont]['papquiebre'];
                     }
+                    $pap->papstock = $productos[$cont]['prsstock'];
                     $pap->update();
 
                 }else{
@@ -74,6 +75,7 @@ class SpaValidarStockController extends Controller
                     }else{
                         $papn->papquiebre = $productos[$cont]['papquiebre'];
                     }
+                    $papn->papstock = $productos[$cont]['prsstock'];
                     $papn->save();
                 }
             }
