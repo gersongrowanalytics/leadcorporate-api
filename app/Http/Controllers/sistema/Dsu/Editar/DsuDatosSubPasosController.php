@@ -19,7 +19,7 @@ class DsuDatosSubPasosController extends Controller
         $horaActual  = date('H:i:s');
 
         $respuesta      = true;
-        $mensaje        = '';
+        $mensaje        = 'Tu información ha sido actualizada';
         $datos          = [];
         $mensajeDetalle = '';
         $mensajedev     = null;
