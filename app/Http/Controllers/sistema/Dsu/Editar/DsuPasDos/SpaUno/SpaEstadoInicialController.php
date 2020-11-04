@@ -44,23 +44,25 @@ class SpaEstadoInicialController extends Controller
 
             for($contFot = 0; $contFot < sizeof($fotos); $contFot++){
                 
-                if($fotos[$contFot]['estado'] == "nuevo"){
-                    $imagen 	= base64_decode($fotos[$contFot]['foto']);
-                    $fichero	= "/sistema/img/OrdenGondola/EstadoInicial/";
-                    $nombre 	= Str::random(10).'.png';
-                    file_put_contents(base_path().'/public'.$fichero.$nombre, $imagen);
-                    
-                    $fopn = new fopfotospasos;
-                    $fopn->dsuid = $dsuid;
-                    $fopn->fopimagen = env('APP_URL').$fichero.$nombre;
-                    $fopn->save();
-
-                }else if($fotos[$contFot]['estado'] == "eliminado"){
-                    $fop = fopfotospasos::find($fotos[$contFot]['fopid']);
-                    $fop->delete();
-
-                }else if($fotos[$contFot]['estado'] == "existente"){
-
+                if(isset($fotos[$contFot]['estado'])){
+                    if($fotos[$contFot]['estado'] == "nuevo"){
+                        $imagen 	= base64_decode($fotos[$contFot]['foto']);
+                        $fichero	= "/sistema/img/OrdenGondola/EstadoInicial/";
+                        $nombre 	= Str::random(10).'.png';
+                        file_put_contents(base_path().'/public'.$fichero.$nombre, $imagen);
+                        
+                        $fopn = new fopfotospasos;
+                        $fopn->dsuid = $dsuid;
+                        $fopn->fopimagen = env('APP_URL').$fichero.$nombre;
+                        $fopn->save();
+    
+                    }else if($fotos[$contFot]['estado'] == "eliminado"){
+                        $fop = fopfotospasos::find($fotos[$contFot]['fopid']);
+                        $fop->delete();
+    
+                    }else if($fotos[$contFot]['estado'] == "existente"){
+    
+                    }
                 }
             }
 
