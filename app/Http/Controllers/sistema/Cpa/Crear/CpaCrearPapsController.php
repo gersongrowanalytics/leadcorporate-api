@@ -49,23 +49,6 @@ class CpaCrearPapsController extends Controller
                     $capn->save();
                 }
 
-                $caps = capcategoriasproveedores::where('prvid', $prvid)
-                                            ->get([
-                                                'capid',
-                                                'prvid',
-                                                'catid'
-                                            ]);
-
-                foreach($caps as $cap){
-                    $cpan = new cpacategoriaspasos;
-                    $cpan->dsuid     = $dsuid;
-                    $cpan->capid     = $cap->capid;
-                    $cpan->prvid     = $prvid;
-                    $cpan->catid     = $cap->catid;
-                    $cpan->cpaestado = false;
-                    $cpan->save();
-                }
-
             }else{
                 $logs[] = "Mayor a 0";
                 $cats = catcategorias::get(['catid', 'catnombre']);
@@ -83,24 +66,23 @@ class CpaCrearPapsController extends Controller
                         }
                     }
                 }
-                
+            }
 
-                $caps = capcategoriasproveedores::where('prvid', $prvid)
-                                            ->get([
-                                                'capid',
-                                                'prvid',
-                                                'catid'
-                                            ]);
+            $caps = capcategoriasproveedores::where('prvid', $prvid)
+                                        ->get([
+                                            'capid',
+                                            'prvid',
+                                            'catid'
+                                        ]);
 
-                foreach($caps as $cap){
-                    $cpan = new cpacategoriaspasos;
-                    $cpan->dsuid     = $dsuid;
-                    $cpan->capid     = $cap->capid;
-                    $cpan->prvid     = $prvid;
-                    $cpan->catid     = $cap->catid;
-                    $cpan->cpaestado = false;
-                    $cpan->save();
-                }
+            foreach($caps as $cap){
+                $cpan = new cpacategoriaspasos;
+                $cpan->dsuid     = $dsuid;
+                $cpan->capid     = $cap->capid;
+                $cpan->prvid     = $prvid;
+                $cpan->catid     = $cap->catid;
+                $cpan->cpaestado = false;
+                $cpan->save();
             }
 
             $cpas = cpacategoriaspasos::join('catcategorias as cat', 'cat.catid', 'cpacategoriaspasos.catid')
@@ -155,8 +137,10 @@ class CpaCrearPapsController extends Controller
 
                 $paps = pappasosproductos::leftjoin('mecmecanicas as mec', 'mec.mecid', 'pappasosproductos.mecid')
                                         ->join('proproductos as pro', 'pro.proid', 'pappasosproductos.proid')
+                                        ->join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
                                         ->where('pappasosproductos.dsuid', $dsuid)
                                         ->where('pro.catid', $cpa->catid)
+                                        ->where('prs.prvid', $prvid)
                                         ->get([
                                             'papid',
                                             'pro.proid',

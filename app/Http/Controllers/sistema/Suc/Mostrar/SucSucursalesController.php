@@ -320,6 +320,8 @@ class SucSucursalesController extends Controller
 
                                         $paps = pappasosproductos::leftjoin('mecmecanicas as mec', 'mec.mecid', 'pappasosproductos.mecid')
                                                         ->join('proproductos as pro', 'pro.proid', 'pappasosproductos.proid')
+                                                        ->join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
+                                                        ->where('prs.prvid', $prvsprincipal->prvid)
                                                         ->where('pappasosproductos.dsuid', $dsu->dsuid)
                                                         ->where('pro.catid', $cpa->catid)
                                                         ->get([
@@ -404,8 +406,10 @@ class SucSucursalesController extends Controller
 
                                         $paps = pappasosproductos::leftjoin('mecmecanicas as mec', 'mec.mecid', 'pappasosproductos.mecid')
                                                         ->join('proproductos as pro', 'pro.proid', 'pappasosproductos.proid')
+                                                        ->join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
                                                         ->where('pappasosproductos.dsuid', $dsu->dsuid)
                                                         ->where('pro.catid', $cpa->catid)
+                                                        ->where('prs.prvid', $prvscompetencia->prvid)
                                                         ->get([
                                                             'papid',
                                                             'pro.proid',

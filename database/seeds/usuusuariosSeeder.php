@@ -16,29 +16,51 @@ class usuusuariosSeeder extends Seeder
         usuusuarios::create([
             "tpuid"          => 1,
             "usuusuario"     => "Gerson",
-            "usucontrasenia" => Hash::make('1234'),
+            "usucontrasenia" => Hash::make('Andrea$$Ezta$$'),
             "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag0"
         ]);
 
         usuusuarios::create([
             "tpuid"          => 1,
-            "usuusuario"     => "Administrador",
-            "usucontrasenia" => Hash::make('1234'),
-            "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag1"
+            "usuusuario"     => "Gerson",
+            "usucontrasenia" => Hash::make('Alessandro$$Mendoza$$'),
+            "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag0"
         ]);
 
         usuusuarios::create([
             "tpuid"          => 1,
-            "usuusuario"     => "Eunice",
-            "usucontrasenia" => Hash::make('1234'),
-            "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag2"
+            "usuusuario"     => "Gerson",
+            "usucontrasenia" => Hash::make('Juan$$Chumpe$$'),
+            "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag0"
         ]);
 
-        usuusuarios::create([
-            "tpuid"          => 1,
-            "usuusuario"     => "Miguel",
-            "usucontrasenia" => Hash::make('1234'),
-            "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag3"
-        ]);
+
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "Gerson",
+        //     "usucontrasenia" => Hash::make('1234'),
+        //     "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag0"
+        // ]);
+
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "Administrador",
+        //     "usucontrasenia" => Hash::make('1234'),
+        //     "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag1"
+        // ]);
+
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "Eunice",
+        //     "usucontrasenia" => Hash::make('1234'),
+        //     "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag2"
+        // ]);
+
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "Miguel",
+        //     "usucontrasenia" => Hash::make('1234'),
+        //     "usutoken"       => "HJ0t4xbw7zmQdZnpAyhffbMORIn8RpD9cUyRihQmXejkIOgmym6fuDOyWag3"
+        // ]);
     }
 }

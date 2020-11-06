@@ -11,15 +11,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('mecmecanicasSeeder');
-        $this->call('paspasosSeeder');
-        $this->call('spasubpasosSeeder');
-        $this->call('tpctiposcomprobantesSeeder');
-        $this->call('tpetiposexhibicionSeeder');
-        $this->call('tputiposusuariosSeeder');
-        $this->call('catcategoriasSeeder');
-        $this->call('arrarrendadosSeeder');
-        $this->call('mtpmaterialespopsSeeder');
-        // $this->call('usuusuariosSeeder');
+        // $this->call('mecmecanicasSeeder');
+        // $this->call('paspasosSeeder');
+        // $this->call('spasubpasosSeeder');
+        // $this->call('tpctiposcomprobantesSeeder');
+        // $this->call('tpetiposexhibicionSeeder');
+        // $this->call('tputiposusuariosSeeder');
+        // $this->call('catcategoriasSeeder');
+        // $this->call('arrarrendadosSeeder');
+        // $this->call('mtpmaterialespopsSeeder');
+        $this->call('usuusuariosSeeder');
     }
 }
