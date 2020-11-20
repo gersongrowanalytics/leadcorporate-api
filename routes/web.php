@@ -21,6 +21,7 @@ $router->get('/cargar/usuarios', 'sistema\CargarData\Usu\UsuariosController@Carg
 $router->get('/cargar/usuariostiendas', 'sistema\CargarData\Uss\UssSucursalesUsuariosController@CargarDataUss');
 $router->get('/cargar/productos', 'sistema\CargarData\Pro\ProductosController@CargarDataProductosMoises');
 $router->get('/cargar/stock', 'sistema\CargarData\Pro\StockProductosController@CargarDataStockProducto');
+$router->get('/cargar/stockUnirversal', 'sistema\CargarData\Pro\StockProductosController@CargarDataStockProductosUniversal');
 $router->get('/cargar/marcasproveedores', 'sistema\CargarData\Map\MapMarcasProveedoresController@MapMarcasProveedores');
 $router->get('/cargar/mcp', 'sistema\CargarData\Mcp\McpMarcasCategoriasProveedoresController@McpCargarData');
 
