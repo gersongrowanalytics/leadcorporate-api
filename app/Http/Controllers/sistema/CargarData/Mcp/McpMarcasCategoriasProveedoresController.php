@@ -23,7 +23,8 @@ class McpMarcasCategoriasProveedoresController extends Controller
     {
         $logs = [];
 
-        $fichero_subido = base_path().'/public/sistema/excels/mProveedoresCategoriasMarcasProductos.xlsx';
+        // $fichero_subido = base_path().'/public/sistema/excels/mProveedoresCategoriasMarcasProductos.xlsx';
+        $fichero_subido = base_path().'/public/sistema/excels/proveedoresCategoriasMarcasProductos/oProveedoresCategoriasMarcasProductos.xlsx';
 
         $objPHPExcel    = IOFactory::load($fichero_subido);
         $objPHPExcel->setActiveSheetIndex(0);
@@ -158,8 +159,8 @@ class McpMarcasCategoriasProveedoresController extends Controller
 
 
             // 
-            $fechacreacion = new \DateTime(date("Y-m-d H:i:s", strtotime('2020-08-27')));
-            $fechaactualizacion = new \DateTime(date("Y-m-d H:i:s", strtotime('2020-08-27')));
+            $fechacreacion = new \DateTime(date("Y-m-d H:i:s", strtotime('2020-11-18')));
+            $fechaactualizacion = new \DateTime(date("Y-m-d H:i:s", strtotime('2020-11-18')));
 
             $fec = fecfechas::where('fecfecha', $fechacreacion)->first(['fecid']);
             $fecid = 0;

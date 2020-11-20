@@ -56,3 +56,5 @@ $router->post('/api/editar/exhibicion/mpp', 'sistema\Dsu\Editar\DsuPasCuatro\Spa
 $router->post('/api/editar/entregaMercaderia', 'sistema\Dsu\Editar\DsuPasNueve\SpaDefault\EditarEntregaMercaderiaController@EditarEntregaMercaderia');
 
 $router->post('/api/editar/salidaTienda', 'sistema\Dsu\Editar\DsuPasSeis\SpaDefault\EditarSalidaTiendaController@EditarSalidaTienda');
+
+$router->post('/api/cerrarRegistrosTiendas', 'sistema\Res\Editar\CerrarRegistrosTiendasController@CerrarRegistroTiendas');
