@@ -84,15 +84,39 @@ class usuusuariosSeeder extends Seeder
         //     "usutoken"       => "Ruthn4xbw7zmQdZnpAyhffnzxczxcxzcxzcxzqqihQmXejkIOgmym6Portal"
         // ]);
 
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "maria.yauri@softys.com",
+        //     "usucontrasenia" => Hash::make('Maria$$Yauri$$'),
+        //     "usutoken"       => "Maria4xbw7zmQdZnpAyhffnzxcz663zcxzqqihQmXejkIOgmym6PYauri"
+        // ]);
+
         usuusuarios::create([
             "tpuid"          => 1,
-            "usuusuario"     => "maria.yauri@softys.com",
-            "usucontrasenia" => Hash::make('Maria$$Yauri$$'),
-            "usutoken"       => "Maria4xbw7zmQdZnpAyhffnzxcz663zcxzqqihQmXejkIOgmym6PYauri"
+            "usuusuario"     => "customer.prime@grow-analytics.com",
+            "usucontrasenia" => Hash::make('Customer$$Prime$$'),
+            "usutoken"       => "Customerbw7zmQdZnpAyhffnzxcz6772dzqzqqihQmXejkIOgmym6PPrime"
         ]);
 
-        
+        usuusuarios::create([
+            "tpuid"          => 1,
+            "usuusuario"     => "inteligencia.artificial@grow-analytics.com",
+            "usucontrasenia" => Hash::make('Inteligencia$$Artificial$$'),
+            "usutoken"       => "Inteligenciabw7zmQdZnpAyhffnzxczBhQmXejkIOgmym6PArtificial"
+        ]);
 
+        usuusuarios::create([
+            "tpuid"          => 1,
+            "usuusuario"     => "mia.aleman@grow-analytics.com",
+            "usucontrasenia" => Hash::make('Mia$$Aleman$$'),
+            "usutoken"       => "Miabw7zmQdZnpAyhffnzxczBhQmXqweasdggejkIOgmym6PAleman"
+        ]);
 
+        usuusuarios::create([
+            "tpuid"          => 1,
+            "usuusuario"     => "ada.caballero@grow-analytics.com",
+            "usucontrasenia" => Hash::make('Ada$$Caballero$$'),
+            "usutoken"       => "Adabw7zmQdZnpAyhffnzxczBhQmXqweasdggejkmym6PCabellero"
+        ]);
     }
 }
