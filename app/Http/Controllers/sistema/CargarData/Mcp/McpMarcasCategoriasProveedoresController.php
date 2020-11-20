@@ -24,7 +24,7 @@ class McpMarcasCategoriasProveedoresController extends Controller
         $logs = [];
 
         // $fichero_subido = base_path().'/public/sistema/excels/mProveedoresCategoriasMarcasProductos.xlsx';
-        $fichero_subido = base_path().'/public/sistema/excels/proveedoresCategoriasMarcasProductos/oProveedoresCategoriasMarcasProductos.xlsx';
+        $fichero_subido = base_path().'/public/sistema/excels/proveedoresCategoriasMarcasProductos/ProveedoresCategoriasMarcasProductos.xlsx';
 
         $objPHPExcel    = IOFactory::load($fichero_subido);
         $objPHPExcel->setActiveSheetIndex(0);
