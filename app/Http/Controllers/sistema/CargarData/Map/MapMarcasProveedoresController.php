@@ -16,7 +16,8 @@ class MapMarcasProveedoresController extends Controller
     {
         $logs = [];
 
-        $fichero_subido = base_path().'/public/sistema/excels/mProveedoresMarcas.xlsx';
+        // $fichero_subido = base_path().'/public/sistema/excels/mProveedoresMarcas.xlsx';
+        $fichero_subido = base_path().'/public/sistema/excels/marcasProveedores/proveedoresMarcas.xlsx';
 
         $objPHPExcel    = IOFactory::load($fichero_subido);
         $objPHPExcel->setActiveSheetIndex(0);
