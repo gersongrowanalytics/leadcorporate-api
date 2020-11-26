@@ -128,7 +128,7 @@ class StockProductosController extends Controller
             "rpsregistroproductossucursales" => []
         );
 
-        $fichero_subido = base_path().'/public/sistema/excels/stocks/AL_19_11_I.xlsx';
+        $fichero_subido = base_path().'/public/sistema/excels/stocks/AL_25_11_I.xlsx';
 
         $objPHPExcel    = IOFactory::load($fichero_subido);
         $objPHPExcel->setActiveSheetIndex(0);
