@@ -59,3 +59,5 @@ $router->post('/api/editar/entregaMercaderia', 'sistema\Dsu\Editar\DsuPasNueve\S
 $router->post('/api/editar/salidaTienda', 'sistema\Dsu\Editar\DsuPasSeis\SpaDefault\EditarSalidaTiendaController@EditarSalidaTienda');
 
 $router->post('/api/cerrarRegistrosTiendas', 'sistema\Res\Editar\CerrarRegistrosTiendasController@CerrarRegistroTiendas');
+
+$router->get('/api/prueba/dan', 'sistema\pruebaController@ProveedoresSkus');
