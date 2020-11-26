@@ -119,11 +119,17 @@ class usuusuariosSeeder extends Seeder
         //     "usutoken"       => "Adabw7zmQdZnpAyhffnzxczBhQmXqweasdggejkmym6PCabellero"
         // ]);
 
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "vicuco93@gmail.com",
+        //     "usucontrasenia" => Hash::make('Victor$$Castaneda$$'),
+        //     "usutoken"       => "Victorw7zmQdZnpAyhffnzxcasdqvocmXqweasdggejkmym6Pcastaneda"
+        // ]);
         usuusuarios::create([
             "tpuid"          => 1,
-            "usuusuario"     => "vicuco93@gmail.com",
-            "usucontrasenia" => Hash::make('Victor$$Castaneda$$'),
-            "usutoken"       => "Victorw7zmQdZnpAyhffnzxcasdqvocmXqweasdggejkmym6Pcastaneda"
+            "usuusuario"     => "jmezarina@softys.com",
+            "usucontrasenia" => Hash::make('Jimmy$$Mezarina$$'),
+            "usutoken"       => "Jimmyw7zmQdZnpAyhffnzxcasdmerzxXqwejimmasdggejkmym6PMezarina"
         ]);
     }
 }
