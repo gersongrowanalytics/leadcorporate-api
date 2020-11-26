@@ -91,32 +91,39 @@ class usuusuariosSeeder extends Seeder
         //     "usutoken"       => "Maria4xbw7zmQdZnpAyhffnzxcz663zcxzqqihQmXejkIOgmym6PYauri"
         // ]);
 
-        usuusuarios::create([
-            "tpuid"          => 1,
-            "usuusuario"     => "customer.prime@grow-analytics.com",
-            "usucontrasenia" => Hash::make('Customer$$Prime$$'),
-            "usutoken"       => "Customerbw7zmQdZnpAyhffnzxcz6772dzqzqqihQmXejkIOgmym6PPrime"
-        ]);
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "customer.prime@grow-analytics.com",
+        //     "usucontrasenia" => Hash::make('Customer$$Prime$$'),
+        //     "usutoken"       => "Customerbw7zmQdZnpAyhffnzxcz6772dzqzqqihQmXejkIOgmym6PPrime"
+        // ]);
+
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "inteligencia.artificial@grow-analytics.com",
+        //     "usucontrasenia" => Hash::make('Inteligencia$$Artificial$$'),
+        //     "usutoken"       => "Inteligenciabw7zmQdZnpAyhffnzxczBhQmXejkIOgmym6PArtificial"
+        // ]);
+
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "mia.aleman@grow-analytics.com",
+        //     "usucontrasenia" => Hash::make('Mia$$Aleman$$'),
+        //     "usutoken"       => "Miabw7zmQdZnpAyhffnzxczBhQmXqweasdggejkIOgmym6PAleman"
+        // ]);
+
+        // usuusuarios::create([
+        //     "tpuid"          => 1,
+        //     "usuusuario"     => "ada.caballero@grow-analytics.com",
+        //     "usucontrasenia" => Hash::make('Ada$$Caballero$$'),
+        //     "usutoken"       => "Adabw7zmQdZnpAyhffnzxczBhQmXqweasdggejkmym6PCabellero"
+        // ]);
 
         usuusuarios::create([
             "tpuid"          => 1,
-            "usuusuario"     => "inteligencia.artificial@grow-analytics.com",
-            "usucontrasenia" => Hash::make('Inteligencia$$Artificial$$'),
-            "usutoken"       => "Inteligenciabw7zmQdZnpAyhffnzxczBhQmXejkIOgmym6PArtificial"
-        ]);
-
-        usuusuarios::create([
-            "tpuid"          => 1,
-            "usuusuario"     => "mia.aleman@grow-analytics.com",
-            "usucontrasenia" => Hash::make('Mia$$Aleman$$'),
-            "usutoken"       => "Miabw7zmQdZnpAyhffnzxczBhQmXqweasdggejkIOgmym6PAleman"
-        ]);
-
-        usuusuarios::create([
-            "tpuid"          => 1,
-            "usuusuario"     => "ada.caballero@grow-analytics.com",
-            "usucontrasenia" => Hash::make('Ada$$Caballero$$'),
-            "usutoken"       => "Adabw7zmQdZnpAyhffnzxczBhQmXqweasdggejkmym6PCabellero"
+            "usuusuario"     => "vicuco93@gmail.com",
+            "usucontrasenia" => Hash::make('Victor$$Castaneda$$'),
+            "usutoken"       => "Victorw7zmQdZnpAyhffnzxcasdqvocmXqweasdggejkmym6Pcastaneda"
         ]);
     }
 }
