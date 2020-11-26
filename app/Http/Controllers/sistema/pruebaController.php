@@ -13,6 +13,7 @@ class pruebaController extends Controller
         $mcps = mcpmarcascategoriasproveedores::join('prvproveedores as prv', 'prv.prvid', 'mcpmarcascategoriasproveedores.prvid')
                                                 ->join('catcategorias as cat', 'cat.catid', 'mcpmarcascategoriasproveedores.catid')
                                                 ->join('proproductos as pro', 'pro.catid', 'cat.catid')
+                                                ->distinct('prv.prvid')
                                                 ->get([
                                                     'prv.prvnombre',
                                                     'cat.catnombre',
