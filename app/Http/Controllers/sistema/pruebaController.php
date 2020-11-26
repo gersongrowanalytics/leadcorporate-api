@@ -10,9 +10,18 @@ class pruebaController extends Controller
 {
     public function ProveedoresSkus()
     {
+        // $mcps = mcpmarcascategoriasproveedores::join('prvproveedores as prv', 'prv.prvid', 'mcpmarcascategoriasproveedores.prvid')
+        //                                         ->join('catcategorias as cat', 'cat.catid', 'mcpmarcascategoriasproveedores.catid')
+        //                                         ->join('proproductos as pro', 'pro.catid', 'cat.catid')
+        //                                         ->get([
+        //                                             'prv.prvnombre',
+        //                                             'pro.prosku',
+        //                                             'pro.pronombre'
+        //                                         ]);
+
         $mcps = mcpmarcascategoriasproveedores::join('prvproveedores as prv', 'prv.prvid', 'mcpmarcascategoriasproveedores.prvid')
-                                                ->join('catcategorias as cat', 'cat.catid', 'mcpmarcascategoriasproveedores.catid')
-                                                ->join('proproductos as pro', 'pro.catid', 'cat.catid')
+                                                ->join('marmarcas as mar', 'mar.marid', 'mcpmarcascategoriasproveedores.marid')
+                                                ->join('proproductos as pro', 'pro.marid', 'mar.marid')
                                                 ->get([
                                                     'prv.prvnombre',
                                                     'pro.prosku',
