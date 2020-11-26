@@ -24,7 +24,7 @@ class pruebaController extends Controller
                                                 ->join('proproductos as pro', 'pro.marid', 'mar.marid')
                                                 ->get([
                                                     'prv.prvnombre',
-                                                    // 'mar.marnombre',
+                                                    'mar.marnombre',
                                                     'pro.prosku',
                                                     'pro.pronombre'
                                                 ]);
