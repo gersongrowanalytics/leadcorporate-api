@@ -355,6 +355,7 @@ class SucSucursalesController extends Controller
                                         }else{
                                             $prss = prsproductossucursales::join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
                                                                             ->where('prvid', $prvsprincipal->prvid)
+                                                                            ->where('prsestado', 1)
                                                                             ->get([
                                                                                 'prsproductossucursales.prsid',
                                                                                 'pro.proid',
