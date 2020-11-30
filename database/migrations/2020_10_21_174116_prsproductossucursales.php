@@ -22,6 +22,7 @@ class Prsproductossucursales extends Migration
             $table->unsignedInteger('marid')->nullable();
             $table->unsignedInteger('fecid');
             $table->string('prsstock');
+            $table->boolean('prsestado')->default(1);
             $table->timestamps();
 
             $table->foreign('sucid')->references('sucid')->on('sucsucursales');
