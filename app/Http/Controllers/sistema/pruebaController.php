@@ -5,6 +5,9 @@ namespace App\Http\Controllers\sistema;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\mcpmarcascategoriasproveedores;
+use App\sucsucursales;
+use App\prsproductossucursales;
+use App\proproductos;
 
 class pruebaController extends Controller
 {
@@ -35,6 +38,53 @@ class pruebaController extends Controller
         return response()->json([
             'datos' => $mcps
         ]);
+
+    }
+
+    public function EliminarDuplicadosStock()
+    {
+
+
+        $sucs = sucsucursales::all();
+        $pros = proproductos::all();
+        $log = [];
+
+        foreach($pros as $pro){
+
+            foreach($sucs as $posicion => $suc){
+
+            
+                $prss = prsproductossucursales::where('sucid', $suc->sucid)
+                                                ->where('proid', $pro->proid)
+                                                ->get();
+                
+                $contador = 0;
+                $cambios = [];
+                foreach($prss as $prs){
+                    
+                    if($contador == 0){
+
+                    }else{
+                        $prse = prsproductossucursales::find($prs->prsid);
+                        $prse->prsestado = 0;
+                        if($prse->update()){
+                            $log[] = "Se cambio el estado de: ".$prs->prsid." con el produto: ".$pro->proid." de la sucursal: ".$suc->sucid;
+                            $cambios[] = "Se cambio el estado de: ".$prs->prsid." con el produto: ".$pro->proid." de la sucursal: ".$suc->sucid;
+                            $sucs[$posicion]['cambios'] = $cambios;
+                        }
+
+                    }
+
+                    $contador = $contador+1;
+                }
+    
+            }
+        }
+
+        dd($log);
+        
+        
+
 
     }
 }

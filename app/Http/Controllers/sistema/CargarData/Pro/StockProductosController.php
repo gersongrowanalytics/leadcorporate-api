@@ -190,8 +190,8 @@ class StockProductosController extends Controller
                         
                         $prs = prsproductossucursales::where('sucid', $suc->sucid)
                                                     ->where('proid', $pro->proid)
-                                                    ->where('catid', $pro->catid)
-                                                    ->where('marid', $pro->marid)
+                                                    // ->where('catid', $pro->catid)
+                                                    // ->where('marid', $pro->marid)
                                                     ->first(['prsid']);
 
                         $prsid = 0;

@@ -61,3 +61,4 @@ $router->post('/api/editar/salidaTienda', 'sistema\Dsu\Editar\DsuPasSeis\SpaDefa
 $router->post('/api/cerrarRegistrosTiendas', 'sistema\Res\Editar\CerrarRegistrosTiendasController@CerrarRegistroTiendas');
 
 $router->get('/api/prueba/dan', 'sistema\pruebaController@ProveedoresSkus');
+$router->get('/api/prueba/eliminarduplicados', 'sistema\pruebaController@EliminarDuplicadosStock');
