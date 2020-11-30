@@ -8,6 +8,7 @@ use App\mcpmarcascategoriasproveedores;
 use App\sucsucursales;
 use App\prsproductossucursales;
 use App\proproductos;
+use App\prvproveedores;
 
 class pruebaController extends Controller
 {
@@ -41,7 +42,7 @@ class pruebaController extends Controller
 
     }
 
-    public function EliminarDuplicadosStock()
+    public function EliminarDuplicadosStockSucursal()
     {
 
 
@@ -82,9 +83,49 @@ class pruebaController extends Controller
         }
 
         dd($log);
-        
-        
 
+    }
+
+    public function EliminarDuplicadosStockProveedor()
+    {
+
+        $prvs = prvproveedores::all();
+        $pros = proproductos::all();
+        $log = [];
+        
+        foreach($pros as $pro){
+
+            foreach($prvs as $posicion => $prv){
+
+            
+                $prss = prsproductossucursales::where('prvid', $prv->prvid)
+                                                ->where('proid', $pro->proid)
+                                                ->get();
+                
+                $contador = 0;
+                $cambios = [];
+                foreach($prss as $prs){
+                    
+                    if($contador == 0){
+
+                    }else{
+                        $prse = prsproductossucursales::find($prs->prsid);
+                        $prse->prsestado = 0;
+                        if($prse->update()){
+                            $log[] = "Se cambio el estado de: ".$prs->prsid." con el produto: ".$pro->proid." del proveedor: ".$prv->prvid;
+                            $cambios[] = "Se cambio el estado de: ".$prs->prsid." con el produto: ".$pro->proid." del proveedor: ".$prv->prvid;
+                            $prvs[$posicion]['cambios'] = $cambios;
+                        }
+
+                    }
+
+                    $contador = $contador+1;
+                }
+    
+            }
+        }
+
+        dd($log);
 
     }
 }
