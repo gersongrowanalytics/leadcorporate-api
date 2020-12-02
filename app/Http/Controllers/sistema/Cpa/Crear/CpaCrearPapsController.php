@@ -111,6 +111,7 @@ class CpaCrearPapsController extends Controller
                 $prss = prsproductossucursales::join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
                                                 ->where('pro.catid', $cpa->catid)
                                                 ->where('prvid', $prvid)
+                                                ->where('prsestado', 1)
                                                 ->get([
                                                     'prsproductossucursales.prsid',
                                                     'pro.proid',
