@@ -186,11 +186,12 @@ class pruebaController extends Controller
                                                 'pro.pronombre',
                                                 'pro.prosku',
                                             ]);
-
-                foreach($prss as $prs){
-                    echo $prs->prsid." - ".$prs->sucnombre." - ".$prs->pronombre." - ".$prs->prosku."<br>";
+                if(sizeof($prss) > 0){
+                    foreach($prss as $prs){
+                        echo $prs->prsid." - ".$prs->sucnombre." - ".$prs->pronombre." - ".$prs->prosku."<br>";
+                    }
+                    echo "<br>-------------------------------------------------------------<br>";
                 }
-                echo "<br>-------------------------------------------------------------<br>";
             }
         }
         
