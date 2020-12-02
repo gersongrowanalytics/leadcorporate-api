@@ -179,6 +179,7 @@ class pruebaController extends Controller
                 $prss = prsproductossucursales::join('sucsucursales as suc', 'suc.sucid', 'prsproductossucursales.sucid')
                                             ->join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
                                             ->where('pro.proid', $arr[$i]['proid'][$c])
+                                            ->where('prsestado', 1)
                                             ->orderby('suc.sucid')
                                             ->get([
                                                 'prsproductossucursales.prsid',
