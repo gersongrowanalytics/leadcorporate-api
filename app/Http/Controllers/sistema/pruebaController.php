@@ -131,100 +131,139 @@ class pruebaController extends Controller
 
     public function EncontrarProductosDuplicados()
     {
-        $arr = array(
-            array(
-                "proid"  => [],
-                "prosku" => [],
-                "pronombre" => "",
-            )
-        );
+        // $arr = array(
+        //     array(
+        //         "proid"  => [],
+        //         "prosku" => [],
+        //         "pronombre" => "",
+        //     )
+        // );
 
-        $pros = proproductos::orderby('pronombre')->get();
+        // $pros = proproductos::orderby('pronombre')->get();
 
-        $prosv2 = proproductos::orderby('pronombre')->get();
+        // $prosv2 = proproductos::orderby('pronombre')->get();
 
-        $contador = 0;
+        // $contador = 0;
 
-        foreach($pros as $pro){
+        // foreach($pros as $pro){
 
-            $encontro = false;
+        //     $encontro = false;
 
-            foreach($prosv2 as $prov2){
-                if($pro->proid != $prov2->proid){
-                    if($pro->pronombre == $prov2->pronombre){
-                        if($encontro == false){
-                            $arr[$contador]['proid'][] = $pro->proid;
-                            $arr[$contador]['prosku'][] = $pro->prosku;
-                            $encontro = true;
-                        }
-                        $arr[$contador]['proid'][] = $prov2->proid;
-                        $arr[$contador]['prosku'][] = $prov2->prosku;
-                        $arr[$contador]['pronombre'] = $prov2->pronombre;
+        //     foreach($prosv2 as $prov2){
+        //         if($pro->proid != $prov2->proid){
+        //             if($pro->pronombre == $prov2->pronombre){
+        //                 if($encontro == false){
+        //                     $arr[$contador]['proid'][] = $pro->proid;
+        //                     $arr[$contador]['prosku'][] = $pro->prosku;
+        //                     $encontro = true;
+        //                 }
+        //                 $arr[$contador]['proid'][] = $prov2->proid;
+        //                 $arr[$contador]['prosku'][] = $prov2->prosku;
+        //                 $arr[$contador]['pronombre'] = $prov2->pronombre;
 
-                    }else{
+        //             }else{
     
+        //             }
+        //         }
+        //     }
+
+        //     if($encontro == true){
+        //         $contador = $contador+1;
+        //     }
+        // }
+
+        // // dd($arr);
+
+        // for($i =0 ; $i < sizeof($arr); $i++){
+        //     for($c = 0; $c < sizeof($arr[$i]['proid']); $c++){
+        //         $prss = prsproductossucursales::join('sucsucursales as suc', 'suc.sucid', 'prsproductossucursales.sucid')
+        //                                     ->join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
+        //                                     ->where('pro.proid', $arr[$i]['proid'][$c])
+        //                                     ->where('prsestado', 1)
+        //                                     ->orderby('suc.sucid')
+        //                                     ->get([
+        //                                         'prsproductossucursales.prsid',
+        //                                         'suc.sucid',
+        //                                         'suc.sucnombre',
+        //                                         'pro.pronombre',
+        //                                         'pro.prosku',
+        //                                     ]);
+        //         if(sizeof($prss) > 0){
+        //             foreach($prss as $prs){
+        //                 echo $prs->prsid." - ".$prs->sucid." - ".$prs->sucnombre." - ".$prs->pronombre." - ".$prs->prosku."<br>";
+        //             }
+        //             echo "<br>-------------------------------------------------------------<br>";
+        //         }
+        //     }
+        // }
+
+        // echo "<br>-------------------------------------------------------------<br>";
+        // echo "<br>-------------------------------------------------------------<br>";
+        // echo "<br>-------------------------------------------------------------<br>";
+        // echo "<br>-------------------------------------------------------------<br>";
+        // echo "<br>-------------------------------------------------------------<br>";
+
+        // for($i =0 ; $i < sizeof($arr); $i++){
+        //     for($c = 0; $c < sizeof($arr[$i]['proid']); $c++){
+        //         $prss = prsproductossucursales::join('prvproveedores as prv', 'prv.prvid', 'prsproductossucursales.prvid')
+        //                                     ->join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
+        //                                     ->where('pro.proid', $arr[$i]['proid'][$c])
+        //                                     ->where('prsestado', 1)
+        //                                     ->orderby('prv.prvid')
+        //                                     ->get([
+        //                                         'prsproductossucursales.prsid',
+        //                                         'prv.prvid',
+        //                                         'prv.prvnombre',
+        //                                         'pro.proid',
+        //                                         'pro.pronombre',
+        //                                         'pro.prosku',
+        //                                     ]);
+        //         if(sizeof($prss) > 0){
+        //             foreach($prss as $prs){
+        //                 echo $prs->prsid." - ".$prs->prvid." - ".$prs->prvnombre." - ".$prs->proid." - ".$prs->pronombre." - ".$prs->prosku."<br>";
+        //             }
+        //             echo "<br>-------------------------------------------------------------<br>";
+        //         }
+        //     }
+        // }
+
+        $prvs = prvproveedores::all();
+
+        foreach($prvs as $prv){
+            $prss = prsproductossucursales::join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
+                                        ->join('prvproveedores as prv', 'prv.prvid', 'prsproductossucursales.prvid')
+                                        ->where('prvid', $prv->prvid)
+                                        ->orderby('pronombre')
+                                        ->get([
+                                            'prsproductossucursales.prsid',
+                                            'pro.proid',
+                                            'pro.pronombre',
+                                            'prv.prvnombre'
+                                        ]);
+
+            $prssv2 = prsproductossucursales::join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
+                                        ->join('prvproveedores as prv', 'prv.prvid', 'prsproductossucursales.prvid')
+                                        ->where('prvid', $prv->prvid)
+                                        ->orderby('pronombre')
+                                        ->get([
+                                            'prsproductossucursales.prsid',
+                                            'pro.proid',
+                                            'pro.pronombre'
+                                        ]);
+
+            foreach($prss as $prs){
+                foreach($prssv2 as $prsv2){
+                    if($prs->prsid != $prsv2->prsid){
+                        if($prs->pronombre == $prsv2->pronombre){
+                            echo $prs->prsid." - ".$prs->prvnombre." - ".$prs->pronombre;
+                        }else{
+                            
+                        }
                     }
                 }
             }
 
-            if($encontro == true){
-                $contador = $contador+1;
-            }
-        }
-
-        // dd($arr);
-
-        for($i =0 ; $i < sizeof($arr); $i++){
-            for($c = 0; $c < sizeof($arr[$i]['proid']); $c++){
-                $prss = prsproductossucursales::join('sucsucursales as suc', 'suc.sucid', 'prsproductossucursales.sucid')
-                                            ->join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
-                                            ->where('pro.proid', $arr[$i]['proid'][$c])
-                                            ->where('prsestado', 1)
-                                            ->orderby('suc.sucid')
-                                            ->get([
-                                                'prsproductossucursales.prsid',
-                                                'suc.sucid',
-                                                'suc.sucnombre',
-                                                'pro.pronombre',
-                                                'pro.prosku',
-                                            ]);
-                if(sizeof($prss) > 0){
-                    foreach($prss as $prs){
-                        echo $prs->prsid." - ".$prs->sucid." - ".$prs->sucnombre." - ".$prs->pronombre." - ".$prs->prosku."<br>";
-                    }
-                    echo "<br>-------------------------------------------------------------<br>";
-                }
-            }
-        }
-
-        echo "<br>-------------------------------------------------------------<br>";
-        echo "<br>-------------------------------------------------------------<br>";
-        echo "<br>-------------------------------------------------------------<br>";
-        echo "<br>-------------------------------------------------------------<br>";
-        echo "<br>-------------------------------------------------------------<br>";
-
-        for($i =0 ; $i < sizeof($arr); $i++){
-            for($c = 0; $c < sizeof($arr[$i]['proid']); $c++){
-                $prss = prsproductossucursales::join('prvproveedores as prv', 'prv.prvid', 'prsproductossucursales.prvid')
-                                            ->join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
-                                            ->where('pro.proid', $arr[$i]['proid'][$c])
-                                            ->where('prsestado', 1)
-                                            ->orderby('prv.prvid')
-                                            ->get([
-                                                'prsproductossucursales.prsid',
-                                                'prv.prvid',
-                                                'prv.prvnombre',
-                                                'pro.proid',
-                                                'pro.pronombre',
-                                                'pro.prosku',
-                                            ]);
-                if(sizeof($prss) > 0){
-                    foreach($prss as $prs){
-                        echo $prs->prsid." - ".$prs->prvid." - ".$prs->prvnombre." - ".$prs->proid." - ".$prs->pronombre." - ".$prs->prosku."<br>";
-                    }
-                    echo "<br>-------------------------------------------------------------<br>";
-                }
-            }
+            
         }
         
     }
