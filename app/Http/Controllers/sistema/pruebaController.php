@@ -232,7 +232,7 @@ class pruebaController extends Controller
         foreach($prvs as $prv){
             $prss = prsproductossucursales::join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
                                         ->join('prvproveedores as prv', 'prv.prvid', 'prsproductossucursales.prvid')
-                                        ->where('prvid', $prv->prvid)
+                                        ->where('prv.prvid', $prv->prvid)
                                         ->orderby('pronombre')
                                         ->get([
                                             'prsproductossucursales.prsid',
@@ -243,7 +243,7 @@ class pruebaController extends Controller
 
             $prssv2 = prsproductossucursales::join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
                                         ->join('prvproveedores as prv', 'prv.prvid', 'prsproductossucursales.prvid')
-                                        ->where('prvid', $prv->prvid)
+                                        ->where('prv.prvid', $prv->prvid)
                                         ->orderby('pronombre')
                                         ->get([
                                             'prsproductossucursales.prsid',
@@ -255,7 +255,7 @@ class pruebaController extends Controller
                 foreach($prssv2 as $prsv2){
                     if($prs->prsid != $prsv2->prsid){
                         if($prs->pronombre == $prsv2->pronombre){
-                            echo $prs->prsid." - ".$prs->prvnombre." - ".$prs->pronombre;
+                            echo $prs->prsid." - ".$prs->prvnombre." - ".$prs->pronombre."<br>";
                         }else{
                             
                         }
