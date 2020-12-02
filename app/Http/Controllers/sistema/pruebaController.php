@@ -264,6 +264,7 @@ class pruebaController extends Controller
                         }
                     }
                 }
+                echo "<br>-------------------------------------------------------------<br>";
             }
 
             
