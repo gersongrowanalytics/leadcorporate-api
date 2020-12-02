@@ -233,10 +233,12 @@ class pruebaController extends Controller
             $prss = prsproductossucursales::join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
                                         ->join('prvproveedores as prv', 'prv.prvid', 'prsproductossucursales.prvid')
                                         ->where('prv.prvid', $prv->prvid)
+                                        ->where('prsestado', 1)
                                         ->orderby('pronombre')
                                         ->get([
                                             'prsproductossucursales.prsid',
                                             'pro.proid',
+                                            'pro.prosku',
                                             'pro.pronombre',
                                             'prv.prvnombre'
                                         ]);
@@ -244,6 +246,7 @@ class pruebaController extends Controller
             $prssv2 = prsproductossucursales::join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
                                         ->join('prvproveedores as prv', 'prv.prvid', 'prsproductossucursales.prvid')
                                         ->where('prv.prvid', $prv->prvid)
+                                        ->where('prsestado', 1)
                                         ->orderby('pronombre')
                                         ->get([
                                             'prsproductossucursales.prsid',
@@ -255,7 +258,7 @@ class pruebaController extends Controller
                 foreach($prssv2 as $prsv2){
                     if($prs->prsid != $prsv2->prsid){
                         if($prs->pronombre == $prsv2->pronombre){
-                            echo $prs->prsid." - ".$prs->prvnombre." - ".$prs->pronombre."<br>";
+                            echo $prs->prsid." - ".$prs->prvnombre." - ".$prs->proid." - ".$prs->prosku." - ".$prs->pronombre."<br>";
                         }else{
                             
                         }
