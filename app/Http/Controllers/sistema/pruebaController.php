@@ -172,7 +172,7 @@ class pruebaController extends Controller
             }
         }
 
-        // dd($arr);
+        dd($arr);
 
         for($i =0 ; $i < sizeof($arr); $i++){
             for($c = 0; $c < sizeof($arr[$i]['proid']); $c++){
@@ -191,6 +191,31 @@ class pruebaController extends Controller
                 if(sizeof($prss) > 0){
                     foreach($prss as $prs){
                         echo $prs->prsid." - ".$prs->sucid." - ".$prs->sucnombre." - ".$prs->pronombre." - ".$prs->prosku."<br>";
+                    }
+                    echo "<br>-------------------------------------------------------------<br>";
+                }
+            }
+        }
+
+        echo "<br>-------------------------------------------------------------<br>";
+
+        for($i =0 ; $i < sizeof($arr); $i++){
+            for($c = 0; $c < sizeof($arr[$i]['proid']); $c++){
+                $prss = prsproductossucursales::join('prvproveedores as prv', 'prv.prvid', 'prsproductossucursales.prvid')
+                                            ->join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
+                                            ->where('pro.proid', $arr[$i]['proid'][$c])
+                                            ->where('prsestado', 1)
+                                            ->orderby('prv.prvid')
+                                            ->get([
+                                                'prsproductossucursales.prsid',
+                                                'prv.prvid',
+                                                'prv.prvnombre',
+                                                'pro.pronombre',
+                                                'pro.prosku',
+                                            ]);
+                if(sizeof($prss) > 0){
+                    foreach($prss as $prs){
+                        echo $prs->prsid." - ".$prs->prvid." - ".$prs->prvnombre." - ".$prs->pronombre." - ".$prs->prosku."<br>";
                     }
                     echo "<br>-------------------------------------------------------------<br>";
                 }
