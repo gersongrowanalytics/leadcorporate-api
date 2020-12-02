@@ -188,7 +188,7 @@ class pruebaController extends Controller
                                             ]);
                 if(sizeof($prss) > 0){
                     foreach($prss as $prs){
-                        echo $prs->prsid." - ".$prs->sucnombre." - ".$prs->pronombre." - ".$prs->prosku."<br>";
+                        echo $prs->prsid." - ".$prs->sucid." - ".$prs->sucnombre." - ".$prs->pronombre." - ".$prs->prosku."<br>";
                     }
                     echo "<br>-------------------------------------------------------------<br>";
                 }
