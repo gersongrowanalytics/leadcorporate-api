@@ -133,7 +133,8 @@ class pruebaController extends Controller
     {
         $arr = array(
             array(
-                "proid" => [],
+                "proid"  => [],
+                "prosku" => [],
                 "pronombre" => "",
             )
         );
@@ -153,9 +154,11 @@ class pruebaController extends Controller
                     if($pro->pronombre == $prov2->pronombre){
                         if($encontro == false){
                             $arr[$contador]['proid'][] = $pro->proid;
+                            $arr[$contador]['prosku'][] = $pro->prosku;
                             $encontro = true;
                         }
                         $arr[$contador]['proid'][] = $prov2->proid;
+                        $arr[$contador]['prosku'][] = $prov2->prosku;
                         $arr[$contador]['pronombre'] = $prov2->pronombre;
 
                     }else{
