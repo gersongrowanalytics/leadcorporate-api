@@ -182,6 +182,7 @@ class pruebaController extends Controller
                                             ->orderby('suc.sucid')
                                             ->get([
                                                 'prsproductossucursales.prsid',
+                                                'suc.sucid',
                                                 'suc.sucnombre',
                                                 'pro.pronombre',
                                                 'pro.prosku',
