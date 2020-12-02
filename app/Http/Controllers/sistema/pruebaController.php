@@ -178,8 +178,8 @@ class pruebaController extends Controller
             for($c = 0; $c < sizeof($arr[$i]['proid']); $c++){
                 $prss = prsproductossucursales::join('sucsucursales as suc', 'suc.sucid', 'prsproductossucursales.sucid')
                                             ->join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
-                                            ->where('proid', $arr[$i]['proid'][$c])
-                                            ->orderby('sucid')
+                                            ->where('pro.proid', $arr[$i]['proid'][$c])
+                                            ->orderby('suc.sucid')
                                             ->get([
                                                 'prsproductossucursales.prsid',
                                                 'suc.sucnombre',
