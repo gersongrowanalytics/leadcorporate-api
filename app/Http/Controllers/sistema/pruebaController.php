@@ -128,4 +128,47 @@ class pruebaController extends Controller
         dd($log);
 
     }
+
+    public function EncontrarProductosDuplicados()
+    {
+        $arr = array(
+            array(
+                "proid" => [],
+                "pronombre" => "",
+            )
+        );
+
+        $pros = proproductos::all();
+
+        $prosv2 = proproductos::all();
+
+        $contador = 0;
+
+        foreach($pros as $pro){
+
+            $encontro = false;
+
+            foreach($prosv2 as $prov2){
+                if($pro->proid != $prov2->proid){
+                    if($pro->pronombre == $prov2->pronombre){
+                        if($encontro == false){
+                            $arr[$contador]['proid'][] = $pro->proid;
+                            $encontro = true;
+                        }
+                        $arr[$contador]['proid'][] = $prov2->proid;
+                        $arr[$contador]['pronombre'] = $prov2->pronombre;
+
+                    }else{
+    
+                    }
+                }
+            }
+
+            if($encontro == true){
+                $contador = $contador+1;
+            }
+        }
+
+        dd($arr);
+    }
 }

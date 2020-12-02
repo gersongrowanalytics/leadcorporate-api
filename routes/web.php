@@ -63,3 +63,4 @@ $router->post('/api/cerrarRegistrosTiendas', 'sistema\Res\Editar\CerrarRegistros
 $router->get('/api/prueba/dan', 'sistema\pruebaController@ProveedoresSkus');
 $router->get('/api/prueba/eliminarduplicados', 'sistema\pruebaController@EliminarDuplicadosStockSucursal');
 $router->get('/api/prueba/eliminarduplicados/proveedores', 'sistema\pruebaController@EliminarDuplicadosStockProveedor');
+$router->get('/api/prueba/encontrarduplicados', 'sistema\pruebaController@EncontrarProductosDuplicados');
