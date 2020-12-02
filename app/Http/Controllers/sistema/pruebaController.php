@@ -139,9 +139,9 @@ class pruebaController extends Controller
             )
         );
 
-        $pros = proproductos::all();
+        $pros = proproductos::orderby('pronombre')->all();
 
-        $prosv2 = proproductos::all();
+        $prosv2 = proproductos::orderby('pronombre')->all();
 
         $contador = 0;
 
