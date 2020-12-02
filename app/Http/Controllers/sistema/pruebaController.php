@@ -172,6 +172,27 @@ class pruebaController extends Controller
             }
         }
 
-        dd($arr);
+        // dd($arr);
+
+        for($i =0 ; $i < sizeof($arr); $i++){
+            for($c = 0; $c < sizeof($arr[$i]['proid']); $c++){
+                $prss = prsproductossucursales::join('sucsucursales as suc', 'suc.sucid', 'prsproductossucursales.sucid')
+                                            ->join('proproductos as pro', 'pro.proid', 'prsproductossucursales.proid')
+                                            ->where('proid', $arr[$i]['proid'][$c])
+                                            ->orderby('sucid')
+                                            ->get([
+                                                'prsproductossucursales.prsid',
+                                                'suc.sucnombre',
+                                                'pro.pronombre',
+                                                'pro.prosku',
+                                            ]);
+
+                foreach($prss as $prs){
+                    echo $prs->prsid." - ".$prs->sucnombre." - ".$prs->pronombre." - ".$prs->prosku."<br>";
+                }
+                echo "<br>-------------------------------------------------------------<br>";
+            }
+        }
+        
     }
 }
