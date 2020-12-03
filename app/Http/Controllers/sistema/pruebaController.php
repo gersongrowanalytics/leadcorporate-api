@@ -362,10 +362,10 @@ class pruebaController extends Controller
                                         'prs.proid',
                                         'prs.sucid'
                                     ]);
-            echo "El pap1: ".$pap->papcantidad." y stock: ".$pap->papstock.': <br>';
+            echo "El pap1: ".$pap->papcantidad." y stock: ".$pap->papstock.' IDPAP: '.$pap->papid.' Y PRSID: '.$pap->prsid.'<br>';
             if(sizeof($paps2) > 0){
                 foreach($paps2 as $pap2){
-                    echo "El pap2: ".$pap2->papcantidad." y stock: ".$pap2->papstock.':';
+                    echo "El pap2: ".$pap2->papcantidad." y stock: ".$pap2->papstock.' IDPAP: '.$pap2->papid.' Y PRSID: '.$pap2->prsid;
                     if($pap->papcantidad <= $pap2->papcantidad && $pap->papstock <= $pap2->papstock ){
                         echo "ELIMINAR";
                     }
