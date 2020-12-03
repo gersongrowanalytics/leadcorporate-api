@@ -280,28 +280,98 @@ class pruebaController extends Controller
             "noeliminados" => []
         );
 
+        // $paps = pappasosproductos::join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
+        //                             ->join('dsudatossubpasos as dsu', 'dsu.dsuid', 'pappasosproductos.dsuid')
+        //                             ->where('prsestado', 0)
+        //                             ->where('papcantidad', 0)
+        //                             ->where('spaid', 6)
+        //                             ->get([
+        //                                 'pappasosproductos.papid',
+        //                                 'prs.prsid',
+        //                                 'papcantidad',
+        //                                 'papstock',
+        //                                 'prs.proid'
+        //                             ]);
+
+
+        // foreach($paps as $pap){
+        //     $papd = pappasosproductos::find($pap->papid);
+        //     if($papd->delete()){
+        //         $logs['eliminados'][] = "El pap se elimino correctamente: ".$pap->papid;
+        //     }else{
+        //         $logs['noeliminados'][] = "El pap no se pudo eliminar: ".$pap->papid;
+        //     }
+        // }
+
+
+
+
+        // $paps = pappasosproductos::join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
+        //                         ->join('dsudatossubpasos as dsu', 'dsu.dsuid', 'pappasosproductos.dsuid')
+        //                         ->where('prsestado', 0)
+        //                         ->where('spaid', 6)
+        //                         ->get([
+        //                             'pappasosproductos.papid',
+        //                             'prs.prsid',
+        //                             'papcantidad',
+        //                             'papstock',
+        //                             'prs.proid'
+        //                         ]);
+
+
+        // foreach($paps as $pap){
+        //     if($pap->papcantidad == $pap->papstock){
+        //         $papd = pappasosproductos::find($pap->papid);
+        //         if($papd->delete()){
+        //             $logs['eliminados'][] = "El pap se elimino correctamente: ".$pap->papid;
+        //         }else{
+        //             $logs['noeliminados'][] = "El pap no se pudo eliminar: ".$pap->papid;
+        //         }
+        //     }
+        // }
+
         $paps = pappasosproductos::join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
-                                    ->join('dsudatossubpasos as dsu', 'dsu.dsuid', 'pappasosproductos.dsuid')
-                                    ->where('prsestado', 0)
-                                    // ->where('papcantidad', 0)
-                                    ->where('spaid', 6)
-                                    ->get([
-                                        'pappasosproductos.papid',
-                                        'papcantidad',
-                                        'papstock'
-                                    ]);
+                                ->join('dsudatossubpasos as dsu', 'dsu.dsuid', 'pappasosproductos.dsuid')
+                                ->where('prsestado', 0)
+                                ->where('spaid', 6)
+                                ->get([
+                                    'pappasosproductos.papid',
+                                    'prs.prsid',
+                                    'papcantidad',
+                                    'papstock',
+                                    'prs.proid',
+                                    'prs.sucid'
+                                ]);
 
         foreach($paps as $pap){
-            if($pap->papcantidad == $pap->papstock){
-                $papd = pappasosproductos::find($pap->papid);
-                if($papd->delete()){
-                    $logs['eliminados'][] = "El pap se elimino correctamente: ".$pap->papid;
-                }else{
-                    $logs['noeliminados'][] = "El pap no se pudo eliminar: ".$pap->papid;
+
+            $paps2 = pappasosproductos::join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
+                                    ->join('dsudatossubpasos as dsu', 'dsu.dsuid', 'pappasosproductos.dsuid')
+                                    ->where('spaid', 6)
+                                    ->where('sucid', $pap->sucid)
+                                    ->where('proid', $pap->proid)
+                                    ->where('prsestado', 1)
+                                    ->get([
+                                        'pappasosproductos.papid',
+                                        'prs.prsid',
+                                        'papcantidad',
+                                        'papstock',
+                                        'prs.proid',
+                                        'prs.sucid'
+                                    ]);
+            echo "El pap1: ".$pap->papcantidad." y stock: ".$pap->papstock.': <br>';
+            if(sizeof($paps2) > 0){
+                foreach($paps2 as $pap2){
+                    echo "El pap2: ".$pap2->papcantidad." y stock: ".$pap2->papstock.': <br>';
                 }
+            }else{
+                echo "NO HAY UN PAPV2 <br>";
             }
+
+            echo "<br><br>------------------------------------------<br><br>";
+
         }
 
-        dd($logs);
+        // dd($logs);
     }
 }
