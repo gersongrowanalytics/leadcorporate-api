@@ -193,6 +193,7 @@ class StockProductosController extends Controller
                         
                         $prs = prsproductossucursales::where('sucid', $suc->sucid)
                                                     ->where('proid', $pro->proid)
+                                                    ->where('prsestado', 1)
                                                     // ->where('catid', $pro->catid)
                                                     // ->where('marid', $pro->marid)
                                                     ->first(['prsid']);

@@ -9,6 +9,7 @@ use App\sucsucursales;
 use App\prsproductossucursales;
 use App\proproductos;
 use App\prvproveedores;
+use App\pappasosproductos;
 
 class pruebaController extends Controller
 {
@@ -274,9 +275,29 @@ class pruebaController extends Controller
 
     public function EliminarDuplicadosPaps()
     {
+        $logs = array(
+            "eliminados" => [],
+            "noeliminados" => []
+        );
+
         $paps = pappasosproductos::join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
+                                    ->join('dsudatossubpasos as dsu', 'dsu.dsuid', 'pappasosproductos.dsuid')
                                     ->where('prsestado', 0)
                                     ->where('papcantidad', 0)
-                                    ->get();
+                                    ->where('spaid', 6)
+                                    ->get([
+                                        'pappasosproductos.papid'
+                                    ]);
+
+        foreach($paps as $pap){
+            $papd = pappasosproductos::find($pap->papid);
+            if($papd->delete()){
+                $logs['eliminados'][] = "El pap se elimino correctamente: ".$pap->papid;
+            }else{
+                $logs['noeliminados'][] = "El pap no se pudo eliminar: ".$pap->papid;
+            }
+        }
+
+        dd($logs);
     }
 }

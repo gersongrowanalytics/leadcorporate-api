@@ -64,3 +64,7 @@ $router->get('/api/prueba/dan', 'sistema\pruebaController@ProveedoresSkus');
 $router->get('/api/prueba/eliminarduplicados', 'sistema\pruebaController@EliminarDuplicadosStockSucursal');
 $router->get('/api/prueba/eliminarduplicados/proveedores', 'sistema\pruebaController@EliminarDuplicadosStockProveedor');
 $router->get('/api/prueba/encontrarduplicados', 'sistema\pruebaController@EncontrarProductosDuplicados');
+
+
+
+$router->get('/api/prueba/eliminarDuplicadosPaps', 'sistema\pruebaController@EliminarDuplicadosPaps');
