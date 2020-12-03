@@ -365,7 +365,11 @@ class pruebaController extends Controller
             echo "El pap1: ".$pap->papcantidad." y stock: ".$pap->papstock.': <br>';
             if(sizeof($paps2) > 0){
                 foreach($paps2 as $pap2){
-                    echo "El pap2: ".$pap2->papcantidad." y stock: ".$pap2->papstock.': <br>';
+                    echo "El pap2: ".$pap2->papcantidad." y stock: ".$pap2->papstock.':';
+                    if($pap->papcantidad < $pap2->papcantidad && $pap->papstock < $pap2->papstock ){
+                        echo "ELIMINAR";
+                    }
+                    echo"<br>";
                 }
             }else{
                 echo "NO HAY UN PAPV2 <br>";
