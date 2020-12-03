@@ -340,7 +340,8 @@ class pruebaController extends Controller
                                     'papcantidad',
                                     'papstock',
                                     'prs.proid',
-                                    'prs.sucid'
+                                    'prs.sucid',
+                                    'dsu.dsuid'
                                 ]);
 
         foreach($paps as $pap){
@@ -350,6 +351,8 @@ class pruebaController extends Controller
                                     ->where('spaid', 6)
                                     ->where('sucid', $pap->sucid)
                                     ->where('prs.proid', $pap->proid)
+                                    ->where('dsu.dsuid', $pap->dsuid)
+
                                     ->where('prsestado', 1)
                                     ->get([
                                         'pappasosproductos.papid',
