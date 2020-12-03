@@ -349,7 +349,7 @@ class pruebaController extends Controller
                                     ->join('dsudatossubpasos as dsu', 'dsu.dsuid', 'pappasosproductos.dsuid')
                                     ->where('spaid', 6)
                                     ->where('sucid', $pap->sucid)
-                                    ->where('proid', $pap->proid)
+                                    ->where('prs.proid', $pap->proid)
                                     ->where('prsestado', 1)
                                     ->get([
                                         'pappasosproductos.papid',
