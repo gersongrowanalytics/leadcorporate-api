@@ -271,4 +271,12 @@ class pruebaController extends Controller
         }
         
     }
+
+    public function EliminarDuplicadosPaps()
+    {
+        $paps = pappasosproductos::join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
+                                    ->where('prsestado', 0)
+                                    ->where('papcantidad', 0)
+                                    ->get();
+    }
 }
