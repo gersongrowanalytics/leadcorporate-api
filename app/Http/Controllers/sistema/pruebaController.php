@@ -283,18 +283,22 @@ class pruebaController extends Controller
         $paps = pappasosproductos::join('prsproductossucursales as prs', 'prs.prsid', 'pappasosproductos.prsid')
                                     ->join('dsudatossubpasos as dsu', 'dsu.dsuid', 'pappasosproductos.dsuid')
                                     ->where('prsestado', 0)
-                                    ->where('papcantidad', 0)
+                                    // ->where('papcantidad', 0)
                                     ->where('spaid', 6)
                                     ->get([
-                                        'pappasosproductos.papid'
+                                        'pappasosproductos.papid',
+                                        'papcantidad',
+                                        'papstock'
                                     ]);
 
         foreach($paps as $pap){
-            $papd = pappasosproductos::find($pap->papid);
-            if($papd->delete()){
-                $logs['eliminados'][] = "El pap se elimino correctamente: ".$pap->papid;
-            }else{
-                $logs['noeliminados'][] = "El pap no se pudo eliminar: ".$pap->papid;
+            if($pap->papcantidad == $pap->papstock){
+                $papd = pappasosproductos::find($pap->papid);
+                if($papd->delete()){
+                    $logs['eliminados'][] = "El pap se elimino correctamente: ".$pap->papid;
+                }else{
+                    $logs['noeliminados'][] = "El pap no se pudo eliminar: ".$pap->papid;
+                }
             }
         }
 
