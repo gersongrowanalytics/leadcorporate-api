@@ -131,7 +131,8 @@ class StockProductosController extends Controller
         // $fichero_subido = base_path().'/public/sistema/excels/stocks/AL_29_11_I.xlsx';
         // $fichero_subido = base_path().'/public/sistema/excels/stocks/AL_30_11_I.xlsx';
         // $fichero_subido = base_path().'/public/sistema/excels/stocks/AL_01_12_I.xlsx';
-        $fichero_subido = base_path().'/public/sistema/excels/stocks/AL_02_12_I.xlsx';
+        // $fichero_subido = base_path().'/public/sistema/excels/stocks/AL_02_12_I.xlsx';
+        $fichero_subido = base_path().'/public/sistema/excels/stocks/AL_03_12_I.xlsx';
 
         $objPHPExcel    = IOFactory::load($fichero_subido);
         $objPHPExcel->setActiveSheetIndex(0);
