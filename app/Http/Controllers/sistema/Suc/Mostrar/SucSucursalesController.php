@@ -88,10 +88,13 @@ class SucSucursalesController extends Controller
                                                 ]);
                         
                         foreach($dsus as $posicionDsu => $dsu){
-                            if($dsu->spaid == 1 || $dsu->spaid == 2 || $dsu->spaid == 3 ){
 
+                            if($dsu->spaid == 1 || $dsu->spaid == 2 || $dsu->spaid == 3 ){
+                                
+                                
                                 $fops = fopfotospasos::where('dsuid', $dsu->dsuid)->get(['fopid', 'fopimagen']);
                                 $dsus[$posicionDsu]['fotos'] = $fops;
+                                
 
                             }else if($dsu->spaid == 4){
                                 $paps = pappasosproductos::join('proproductos as pro', 'pro.proid', 'pappasosproductos.proid')
@@ -734,6 +737,7 @@ class SucSucursalesController extends Controller
                                                                 'mtp.mtpid',
                                                                 'mtpnombre',
                                                                 'mtpimagen',
+                                                                'marid',
                                                                 'mppmarca',
                                                                 'mppproducto',
                                                                 'mppdescripcion'
@@ -768,6 +772,7 @@ class SucSucursalesController extends Controller
                                                                 'mtp.mtpid',
                                                                 'mtpnombre',
                                                                 'mtpimagen',
+                                                                'marid',
                                                                 'mppmarca',
                                                                 'mppproducto',
                                                                 'mppdescripcion'

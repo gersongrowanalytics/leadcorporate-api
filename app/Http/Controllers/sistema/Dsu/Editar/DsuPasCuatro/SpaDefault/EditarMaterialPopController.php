@@ -72,6 +72,7 @@ class EditarMaterialPopController extends Controller
                                     'mtp.mtpid',
                                     'mtpnombre',
                                     'mtpimagen',
+                                    'marid',
                                     'mppmarca',
                                     'mppproducto',
                                     'mppdescripcion'
